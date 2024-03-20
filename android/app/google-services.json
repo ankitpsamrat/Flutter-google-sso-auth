@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "253777213968",
+    "project_id": "ssoauth-2cf6e",
+    "storage_bucket": "ssoauth-2cf6e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:253777213968:android:7908ab59eef90e04a22895",
+        "android_client_info": {
+          "package_name": "com.example.google_sso_auth"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "253777213968-9i2from3u03gl7oc88ncvme73dbnfc6o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCyN6NE8dngU-BqYQo5EklmUTgoA6wDtIc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "253777213968-9i2from3u03gl7oc88ncvme73dbnfc6o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
