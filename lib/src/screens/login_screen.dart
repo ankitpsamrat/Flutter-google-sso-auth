@@ -9,8 +9,8 @@ class LoginScreen extends StatelessWidget {
       body: Center(
         child: ElevatedButton.icon(
           onPressed: () {},
-          icon: Icon(Icons.person),
-          label: Text('Login with google'),
+          icon: const Icon(Icons.person),
+          label: const Text('Login with google'),
         ),
       ),
     );
