@@ -3,6 +3,7 @@ import 'package:spotify_clone/core/config/theme/app_color.dart';
 
 class AppTheme {
   static final ThemeData lightTheme = ThemeData(
+    useMaterial3: false,
     fontFamily: 'Satoshi',
     brightness: Brightness.light,
     primaryColor: AppColor.primary,
@@ -22,6 +23,7 @@ class AppTheme {
   );
 
   static final ThemeData darkTheme = ThemeData(
+    useMaterial3: false,
     fontFamily: 'Satoshi',
     brightness: Brightness.dark,
     primaryColor: AppColor.primary,
