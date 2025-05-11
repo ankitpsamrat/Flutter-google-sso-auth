@@ -1,4 +1,4 @@
-# google_sso_auth
+# spotify_clone
 
 A new Flutter project.
 
