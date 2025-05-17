@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 
 class ThemeCubit extends HydratedCubit<ThemeMode> {
-  ThemeCubit() : super(ThemeMode.system);
+  // default value would be system for theme change
+  ThemeCubit() : super(ThemeMode.dark); // <--here
 
   void updateTheme(ThemeMode themeMode) {
     emit(themeMode);
