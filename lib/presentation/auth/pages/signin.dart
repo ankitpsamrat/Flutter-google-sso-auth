@@ -5,10 +5,10 @@ import 'package:spotify_clone/common/widgets/button/basic_app_button.dart';
 import 'package:spotify_clone/common/widgets/custom_appbar.dart';
 import 'package:spotify_clone/core/config/assets/app_vectors.dart';
 import 'package:spotify_clone/core/config/theme/app_color.dart';
-import 'package:spotify_clone/presentation/auth/pages/signin.dart';
+import 'package:spotify_clone/presentation/auth/pages/signup.dart';
 
-class SignupPage extends StatelessWidget {
-  const SignupPage({super.key});
+class SigninPage extends StatelessWidget {
+  const SigninPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class SignupPage extends StatelessWidget {
           child: Column(
             children: [
               Text(
-                'Register',
+                'Sign In',
                 style: TextStyle(
                   fontSize: 30,
                   color: context.isDarkMode ? AppColor.white : AppColor.black,
@@ -36,14 +36,7 @@ class SignupPage extends StatelessWidget {
               TextField(
                 textInputAction: TextInputAction.next,
                 decoration: const InputDecoration(
-                  hintText: 'Full name',
-                ).applyDefaults(Theme.of(context).inputDecorationTheme),
-              ),
-              const SizedBox(height: 20),
-              TextField(
-                textInputAction: TextInputAction.next,
-                decoration: const InputDecoration(
-                  hintText: 'Enter email',
+                  hintText: 'Enter username or email',
                 ).applyDefaults(Theme.of(context).inputDecorationTheme),
               ),
               const SizedBox(height: 20),
@@ -54,7 +47,7 @@ class SignupPage extends StatelessWidget {
               ),
               const SizedBox(height: 50),
               BasicAppButton(
-                title: 'Create Account',
+                title: 'Sign In',
                 onPressed: () {},
               ),
               const SizedBox(height: 50),
@@ -62,7 +55,7 @@ class SignupPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Text(
-                    'Do You Have An Account?',
+                    'Not a member?',
                     style: TextStyle(
                       fontSize: 14,
                       color: AppColor.white,
@@ -74,12 +67,12 @@ class SignupPage extends StatelessWidget {
                       Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const SigninPage(),
+                          builder: (context) => const SignupPage(),
                         ),
                       );
                     },
                     child: const Text(
-                      'Sign In',
+                      'Register Now',
                       style: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w500,
