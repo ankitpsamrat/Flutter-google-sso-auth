@@ -5,10 +5,17 @@ import 'package:spotify_clone/common/widgets/button/basic_app_button.dart';
 import 'package:spotify_clone/common/widgets/custom_appbar.dart';
 import 'package:spotify_clone/core/config/assets/app_vectors.dart';
 import 'package:spotify_clone/core/config/theme/app_color.dart';
+import 'package:spotify_clone/data/models/auth/signin_user_reg.dart';
+import 'package:spotify_clone/domain/usecases/auth/signin.dart';
 import 'package:spotify_clone/presentation/auth/pages/signup.dart';
+import 'package:spotify_clone/presentation/root/pages/root.dart';
+import 'package:spotify_clone/service_locator.dart';
 
 class SigninPage extends StatelessWidget {
-  const SigninPage({super.key});
+  SigninPage({super.key});
+
+  final _email = TextEditingController();
+  final _password = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +41,7 @@ class SigninPage extends StatelessWidget {
               ),
               const SizedBox(height: 50),
               TextField(
+                controller: _email,
                 textInputAction: TextInputAction.next,
                 decoration: const InputDecoration(
                   hintText: 'Enter username or email',
@@ -41,6 +49,7 @@ class SigninPage extends StatelessWidget {
               ),
               const SizedBox(height: 20),
               TextField(
+                controller: _password,
                 decoration: const InputDecoration(
                   hintText: 'Password',
                 ).applyDefaults(Theme.of(context).inputDecorationTheme),
@@ -48,17 +57,46 @@ class SigninPage extends StatelessWidget {
               const SizedBox(height: 50),
               BasicAppButton(
                 title: 'Sign In',
-                onPressed: () {},
+                onPressed: () async {
+                  var result = await sl<SigninUseCase>().call(
+                    params: SigninUserReg(
+                      email: _email.text,
+                      password: _password.text,
+                    ),
+                  );
+
+                  result.fold((ifLeft) {
+                    var snackbar = SnackBar(
+                      backgroundColor: AppColor.blue,
+                      content: Text(
+                        ifLeft,
+                        style: const TextStyle(
+                          color: AppColor.white,
+                        ),
+                      ),
+                    );
+
+                    ScaffoldMessenger.of(context).showSnackBar(snackbar);
+                  }, (ifRight) {
+                    Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const Root(),
+                        ),
+                        (route) => false);
+                  });
+                },
               ),
               const SizedBox(height: 50),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text(
+                  Text(
                     'Not a member?',
                     style: TextStyle(
                       fontSize: 14,
-                      color: AppColor.white,
+                      color:
+                          context.isDarkMode ? AppColor.white : AppColor.black,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
@@ -67,7 +105,7 @@ class SigninPage extends StatelessWidget {
                       Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const SignupPage(),
+                          builder: (context) => SignupPage(),
                         ),
                       );
                     },
